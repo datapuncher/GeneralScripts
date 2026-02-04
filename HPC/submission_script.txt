@@ -1,0 +1,64 @@
+Batch / slurm
+
+Thursday, September 21, 2023
+2:33 PM
+
+ssh to hpc02
+for example, here is an example that requests two gpus, 32 cores and
+500 GB memory on the a40gpu queue:
+
+srun --gres=gpu:nvidia_a40:2 -n32 --mem=500G --pty -t 168:00:00 -p a40gpu bash
+==> If you just run the command above, it will enter you into a server with interactive terminal.
+
+srun --gres=gpu:nvidia_a40:0 -n32 --mem=800G --pty -t 168:00:00 -p a40gpu bash
+
+
+<For CPU only jobs>
+srun -n50 --mem=250G --pty -t 180:00:00 -p cpuonly bash
+
+<all configuration for slurm is stored in>
+more /etc/slurm/slurm.conf
+
+<Also, check sinfo for node information>
+sinfo
+
+If you want to run it as a batch job, you just create a shell script. Run sbatch with the script.
+
+like this:
+#!/bin/bash
+#SBATCH -N 2 # two nodes
+#SBATCH -p cpuonly
+#SBATCH --ntasks-per-node 4 # number of cpus per node
+#SBATCH -t 5:00:00 # time 5 hours
+#SBATCH --mem=8GB # amount of memory
+# echo commands to stdout
+
+module load ....
+
+mpirun ....
+
+From <https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox/KtbxLzFrMRtFJLNjnscpvmcrtzFnSMhZVq>;
+
+
+Then launch the job by 'sbatch commands'
+
+#!/bin/bash
+#SBATCH --mail-user=lee04516@umn.edu
+#SBATCH --mail-type=end,fail
+#SBATCH --ntasks-per-node=160
+#SBATCH --ntasks=160
+#SBATCH --nodes=1
+#SBATCH --time=720:00:00
+#SBATCH --mem-per-cpu=8G
+#SBATCH --gres=gpu:0
+#SBATCH --partition=a40gpu
+#SBATCH --error=3Dclass.err
+#SBATCH --output=3Dclass.out
+
+export RELION_ERROR_LOCAL_MPI=256
+module load relionv5
+module load openmpi
+ulimit -l unlimited
+
+mpirun -np 40 `which relion_refine_mpi` --o Class3D/job001/run --i fullexpand_subparticles/fullexpand_20240420_0034/fullexpand_subpart.star --ref fullexpand_subparticles/fullexpand_20240420_0034/fullexpand_initialmodel_c1.mrc --firstiter_cc --ini_high 60 --dont_combine_weights_via_disc --pool 100 --pad 2 --ctf --iter 25 --tau2_fudge 4 --particle_diameter 110 --fast_subsets --K 6 --flatten_solvent --zero_mask --skip_align --sym C1 --norm --scale --j 4 --pipeline_control Class3D/job001/
+####the end
