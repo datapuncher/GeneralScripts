@@ -1,0 +1,16 @@
+-------START NEW INSTALL-----
+install date:
+Tue  2 Dec 04:38:28 EST 2025
+Linux rpi4-4 6.12.47+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.12.47-1+rpt1 (2025-09-16) aarch64 GNU/Linux
+nermal
+/home/nermal
+install details
+package:
+
+build dir:
+/home/nermal
+cahche_dir:
+/tmp/apt/cache
+source list dir:
+/tmp/apt/sources
+-------END NEW INSTALL------
