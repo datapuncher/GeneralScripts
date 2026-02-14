@@ -1,10 +1,6 @@
 #!/usr/bin/python3   
 # -*- coding: utf-8 -*-
 
-# Using curl to get data from https://ipinfo.io/json
-# Template from pycurl documentation
-# http://pycurl.io/docs/latest/quickstart.html#examining-response-headers
-
 import pycurl #curl library
 import certifi #HTTP over TLS/SSL library
 from io import BytesIO #Buffered I/O implementation using an in-memory bytes buffer.
