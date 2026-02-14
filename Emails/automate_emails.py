@@ -77,17 +77,17 @@ def send_email(sender_email: str,
         my_server.quit()
 
 # Example usage
-sender_email = "jason.porta@gmail.com"
-sender_name = "Jason Porta"
+sender_email = "sender@gmail.com"
+sender_name = "Sender"
 password = os.environ.get("EMAIL_PASSWORD")
 
 email_subject = "Good afternoon"
 email_body = """
-<h1>Good Morning!</h1>
-<p>Hope you have a <strong>wonderful day</strong>.</p>
+<h1>HPC Disk Usage Report</h1>
+<p>This week's disk usage report <strong>wonderful day</strong>.</p>
 """
-receiver_emails = ["jason.porta@protonmail.com", "davidsanders737@yahoo.com"]
-attachments = ["/Users/jporta/Desktop/GitHub/Emails/file.txt", "/Users/jporta/Desktop/GitHub/Emails/file2.txt"]
+receiver_emails = ["receiver@protonmail.com", "receiver@yahoo.com"]
+attachments = ["/Users/admin/Desktop/GitHub/Emails/file.txt", "/Users/admin/Desktop/GitHub/Emails/file2.txt"]
 
 # Sending the email as HTML with attachments
 send_email(sender_email, sender_name, password, receiver_emails, email_body, email_subject, is_html=True, attachments=attachments)
