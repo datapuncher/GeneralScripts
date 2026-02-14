@@ -8,10 +8,10 @@ from email.mime.text import MIMEText
 
 # A template to send an email via shell
 
-sender_email = "jason.porta@gmail.com"
-sender_password = "udgu hfhn zfgt gpfw"
-recipient_email = "jason.porta@gmail.com"
-subject = "Hello from Python"
+sender_email = "sender@gmail.com"
+sender_password = "google application password"
+recipient_email = "receiver@gmail.com"
+subject = "Automated Reminder"
 body = "with attachment"
 
 
