@@ -81,7 +81,7 @@ sender_email = "sender@gmail.com"
 sender_name = "Sender"
 password = os.environ.get("EMAIL_PASSWORD")
 
-email_subject = "Good afternoon"
+email_subject = "Disk Usage"
 email_body = """
 <h1>HPC Disk Usage Report</h1>
 <p>This week's disk usage report <strong>wonderful day</strong>.</p>
